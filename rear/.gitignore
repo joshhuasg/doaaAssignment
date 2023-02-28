@@ -1,0 +1,11 @@
+# Virtual Environment
+.venv
+
+# Temporary Files
+tmp/
+
+# Model Binaries
+img_classifier/
+
+# Python Cache Binaries
+**/__pycache__/
