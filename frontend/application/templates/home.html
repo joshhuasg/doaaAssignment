@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container dark-form mt-3">
+    <div class="row">
+        <div class="col-12 col-md-3">
+            <ul class="home_menu w-100">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active">
+                        New Prediction</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('routes.dashboard') }}" class="nav-link">
+                        Dashboard</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-12 col-md">
+            <div class="row">
+                {{ render_flashes() }}
+                <ul class="nav nav-pills white p-0" id="prediction-mode" role="tablist">
+                    <li class="nav-item col-4" role="presentation">
+                        <button class="nav-link active w-100" id="draw-mode" data-bs-toggle="tab"
+                            data-bs-target="#draw-content" type="button" role="tab" aria-controls="draw-content"
+                            aria-selected="true" onclick="webcam.stop()">DRAW</button>
+                    </li>
+                    <li class="nav-item col-4" role="presentation">
+                        <button class="nav-link w-100" id="file-mode" data-bs-toggle="tab" data-bs-target="#file-content"
+                            type="button" role="tab" aria-controls="file-content" aria-selected="false"
+                            onclick="webcam.stop()">FILE</button>
+                    </li>
+                    <li class="nav-item col-4" role="presentation">
+                        <button class="nav-link w-100" id="cam-mode" data-bs-toggle="tab" data-bs-target="#cam-content"
+                            type="button" role="tab" aria-controls="cam-content" aria-selected="false"
+                            onclick="webcam.start()">WEBCAM</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="row m-3">
+                <div class="col-12 p-0">
+                    <h3 id="result" class="bg-transparent">Welcome :)</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="tab-content text-white p-0">
+                    <div class="tab-pane fade show active pt-3" id="draw-content" role="tabpanel"
+                        aria-labelledby="draw-mode">
+                        {% include "includes/drawing_input.html" %}
+                    </div>
+                    <div class="tab-pane fade" id="file-content" role="tabpanel" aria-labelledby="file-mode">
+                        {% include "includes/file_input.html" %}
+                    </div>
+                    <div class="tab-pane fade" id="cam-content" role="tabpanel" aria-labelledby="cam-mode">
+                        {% include "includes/cam_input.html" %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
